@@ -11,6 +11,6 @@ public class DemoController {
 
     @GetMapping( "/ping")
     public GeneralResponse<String> ping(@RequestParam(value = "echo", defaultValue = "pong")String echo) {
-        return new GeneralResponse<String>( true, echo);
+        return new GeneralResponse<String>("successful", true, echo);
     }
 }
