@@ -1,4 +1,4 @@
-package za.ac.nwu.as.domain.service;
+package za.ac.nwu.domain.dto.service;
 
 import java.io.Serializable;
 import java.util.Objects;
