@@ -1,12 +1,10 @@
 package za.ac.nwu.domain.dto.persistence;
 
-import com.sun.istack.internal.NotNull;
 import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
 import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Objects;
 
 @Getter
@@ -30,7 +28,7 @@ public class AccountTransaction implements Serializable{
     private Long transactionId;
 
     //@Column(name = "ACCOUNT_TYPE_ID") //Added to GetOperation in
-    private AccountType accountType; //DB which represents the table
+    private AccountTypeDto accountTypeDto; //DB which represents the table
     //we do the above for any foreign key
 
     @Column(name = "MEMBER_ID")
@@ -44,7 +42,7 @@ public class AccountTransaction implements Serializable{
 
     public AccountTransaction(Long transactionId, Long accountTypeId, Long memberId, Long amount, Long transactionDate) {
         this.transactionId = transactionId;
-        this.accountType = accountType;
+        this.accountTypeDto = accountTypeDto;
         this.memberId = memberId;
         this.amount = amount;
         this.transactionDate = transactionDate;
@@ -64,11 +62,11 @@ public class AccountTransaction implements Serializable{
     @ManyToOne(fetch = FetchType.LAZY)//In this code we can have many transactions
     @JoinColumn(name = "ACCOUNT_TYPE_ID")//and they'll all lead to one place
     public Long getAccountTypeId() {
-        return accountType;
+        return accountTypeDto;
     }
 
     public void setAccountTypeId(Long accountTypeId) {
-        this.accountType = accountTypeId;
+        this.accountTypeDto = accountTypeId;
     }
 
     public Long getMemberId() {
@@ -95,8 +93,8 @@ public class AccountTransaction implements Serializable{
         this.transactionDate = transactionDate;
     }
 
-    public void setAccountType(AccountType accountType){
-        this.accountType =accountType;
+    public void setAccountType(AccountTypeDto accountTypeDto){
+        this.accountTypeDto = accountTypeDto;
     }
 
     @Override
@@ -104,19 +102,19 @@ public class AccountTransaction implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountTransaction that = (AccountTransaction) o;
-        return Objects.equals(transactionId, that.transactionId) && Objects.equals(accountType, that.accountType) && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate);
+        return Objects.equals(transactionId, that.transactionId) && Objects.equals(accountTypeDto, that.accountTypeDto) && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(transactionId, accountType, memberId, amount, transactionDate);
+        return Objects.hash(transactionId, accountTypeDto, memberId, amount, transactionDate);
     }
 
     @Override
     public String toString() {
         return "AccountTransaction{" +
                 "transactionId=" + transactionId +
-                ", accountType=" + accountType +
+                ", accountType=" + accountTypeDto +
                 ", memberId=" + memberId +
                 ", amount=" + amount +
                 ", transactionDate=" + transactionDate +

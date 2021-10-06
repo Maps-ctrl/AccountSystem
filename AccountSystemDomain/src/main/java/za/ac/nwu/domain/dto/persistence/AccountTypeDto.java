@@ -1,15 +1,20 @@
 package za.ac.nwu.domain.dto.persistence;
 
-import javax.persistence.*;
+import com.fasteral.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import za.ac.nwu.domain.persistence.AccountType;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
 
+
+@ApiModel(value = AccountType, description = "A DTO that represents the AccountType")
 @Entity
 @Table(name = "ACCOUNT_TYPE",schema = "Discovery Miles")
 
-public class AccountType implements Serializable {
+public class AccountTypeDto implements Serializable {
 
     private static final long serialVersionUID = 4656451835837549737L;
     @Id
@@ -27,7 +32,7 @@ public class AccountType implements Serializable {
     @Column(name = "CREATION_DATE")
     private LocalDate creationDate;
 
-    public AccountType(Long accountTypeId, String mnemonic, String accountTypeName, LocalDate creationDate) {
+    public AccountTypeDto(Long accountTypeId, String mnemonic, String accountTypeName, LocalDate creationDate) {
         this.accountTypeId = accountTypeId;
         this.mnemonic = mnemonic;
         this.accountTypeName = accountTypeName;
@@ -46,6 +51,14 @@ public class AccountType implements Serializable {
         this.accountTypeId = accountTypeId;
     }
 
+    @ApiModelProperty(position =1,
+
+            value= "AccountType Mnemonic",
+            name = "Mnemonic",
+            notes = "Uniquely identifies AccountType",
+            dataType = "java.lang.String",
+            example = "MILES",
+            required = true)
     public String getMnemonic() {
         return mnemonic;
     }
@@ -54,6 +67,14 @@ public class AccountType implements Serializable {
         this.mnemonic = mnemonic;
     }
 
+    @ApiModelProperty(position =2,
+
+            value= "AccountType Name",
+            name = "Name",
+            notes = "The name of the AccountType",
+            dataType = "java.lang.String",
+            example = "Miles",
+            required = true)
     public String getAccountTypeName() {
         return accountTypeName;
     }
@@ -62,6 +83,15 @@ public class AccountType implements Serializable {
         this.accountTypeName = accountTypeName;
     }
 
+    @ApiModelProperty(position =3,
+
+            value= "AccountType Creation Date",
+            name = "CreationDate",
+            notes = "Date when account was created",
+            dataType = "java.lang.String",
+            example = "2020-05-21",
+            allowEmptyValue = true ,
+            required = false)
     public LocalDate getCreationDate() {
         return creationDate;
     }
@@ -70,7 +100,7 @@ public class AccountType implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public AccountType() {
+    public AccountTypeDto() {
 
     }
 
@@ -78,9 +108,14 @@ public class AccountType implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AccountType that = (AccountType) o;
+        AccountTypeDto that = (AccountTypeDto) o;
         return Objects.equals(accountTypeId, that.accountTypeId) && Objects.equals(mnemonic, that.mnemonic) && Objects.equals(accountTypeName, that.accountTypeName) && Objects.equals(creationDate, that.creationDate);
     }
+    @JsonIgnore //Any getters showing up which aren't part of your model are going to be added to the gitIgnore
+    public AccountType getAccountType(){
+        return new AccountType(getMnemonic(),getAccountTypeName(),getCreationDate());
+    }
+
 
     @Override
     public int hashCode() {
