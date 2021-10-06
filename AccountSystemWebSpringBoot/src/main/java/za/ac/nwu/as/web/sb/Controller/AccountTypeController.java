@@ -57,8 +57,8 @@ public class AccountTypeController {
             @ApiResponse(code = 404, message = "Not found", response = GeneralResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)})
     public ResponseEntity<GeneralResponse<List<AccountTypeDto>>> getAll(){
-            List<AccountTypeDto> accountTypes = fetchAccountTypeFlow.getAllAccountTypes();
-            GeneralResponse<List<AccountTypeDto>> response = new GeneralResponse<> (successful: true, accountTypes );
+            List<AccountTypeDto> accountType = fetchAccountTypeFlow.getAllAccountTypes();
+            GeneralResponse<List<AccountTypeDto>> response = new GeneralResponse<> ( true, accountType );
             return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -75,7 +75,7 @@ public class AccountTypeController {
             @ApiParam(value = "Request body to create a new account Type", required =true)
             @RequestBody AccountType accountType) {
         AccountType accountTypeResponse = createAccountTypeFlow.create(accountType);
-        GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(successful:true, accountTypeResponse );
+        GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountTypeResponse);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 

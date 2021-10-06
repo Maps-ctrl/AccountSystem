@@ -23,6 +23,13 @@
             <version>4.3.30.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+
     </dependencies>
 
 

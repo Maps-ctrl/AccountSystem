@@ -18,12 +18,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>za.ac.nwu.ac</groupId>
+            <groupId>za.ac.nwu.as</groupId>
             <artifactId>AccountSystemDomain</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>za.ac.nwu.ac</groupId>
+            <groupId>za.ac.nwu.as</groupId>
             <artifactId>AccountSystemLogic</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -39,7 +39,7 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
         </dependency>
-        9
+
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
