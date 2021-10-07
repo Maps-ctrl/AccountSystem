@@ -1,23 +1,17 @@
 package za.ac.nwu.as.web.sb.Controller;
 
-/*import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import za.ac.nwu.as.domain.za.ac.nwu.domain.dto.service.GeneralResponse;*/
-
-
+import za.ac.nwu.as.domain.za.ac.nwu.domain.dto.service.GeneralResponse;
 import io.swagger.annotations.ApiOperations;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import za.ac.nwu.as.domain.service.GeneralResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import za.ac.nwu.as.domain.services.GeneralResponse;
 import za.ac.nwu.as.domain.services.Pong;
 import za.ac.nwu.as.domain.dto.AccountTypeDto;
 import za.ac.nwu.as.logic.flow.CreateAccountTypeFlow;
@@ -49,6 +43,7 @@ public class AccountTypeController {
         this.createAccountTypeFlow = createAccountTypeFlow;
     }
 
+    //Code below fetches all types of account and displays them in your API(swagger)
     @GetMapping("/all")
     @ApiOperation(value = "Gets all the configured account types", notes = "Returns a list of account types")
     @ApiResponses(value = {
