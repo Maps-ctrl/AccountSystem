@@ -22,6 +22,7 @@ public class CreateAccountTypeFlowImpl implements CreateAccountTypeFlow {
             accountType.setCreationDate(LocalDate.now());
 
         }
+        AccountTypeDto accountTypeDto = accountTypeTranslator.create(accountType);
         return accountTypeTranslator.create(accountType);
     }
 }

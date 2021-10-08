@@ -4,4 +4,6 @@ import za.ac.nwu.domain.dto.AccountTypeDto;
 
 public interface AccountTypeTranslator {
     List<AccountTypeDto> getAllAccountTypes();
+    AccountTypeDto create(AccountTypeDto accountTypeDto);
+
 }
