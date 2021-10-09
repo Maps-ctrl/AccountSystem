@@ -3,14 +3,14 @@ package za.ac.nwu.domain.dto.persistence;
 import com.fasteral.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import za.ac.nwu.domain.persistence.AccountType;
+import za.ac.nwu.domain.persistence.AccountTypeDto;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
 
 
-@ApiModel(value = AccountType, description = "A DTO that represents the AccountType")
+@ApiModel(value = AccountTypeDto, description = "A DTO that represents the AccountType")
 @Entity
 @Table(name = "ACCOUNT_TYPE",schema = "Discovery Miles")
 
@@ -112,8 +112,8 @@ public class AccountTypeDto implements Serializable {
         return Objects.equals(accountTypeId, that.accountTypeId) && Objects.equals(mnemonic, that.mnemonic) && Objects.equals(accountTypeName, that.accountTypeName) && Objects.equals(creationDate, that.creationDate);
     }
     @JsonIgnore //Any getters showing up which aren't part of your model are going to be added to the gitIgnore
-    public AccountType getAccountType(){
-        return new AccountType(getMnemonic(),getAccountTypeName(),getCreationDate());
+    public AccountTypeDto getAccountType(){
+        return new AccountTypeDto(getMnemonic(),getAccountTypeName(),getCreationDate());
     }
 
 

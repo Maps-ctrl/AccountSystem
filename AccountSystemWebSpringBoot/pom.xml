@@ -63,9 +63,7 @@
             <artifactId>spring-beans</artifactId>
             <version>5.3.10</version>
         </dependency>
-    </dependencies>
 
-    <dependencies>
         <dependency>
             <groupId>za.ac.nwu.as</groupId>
             <artifactId>AccountSystemDomain</artifactId>
@@ -86,13 +84,20 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-
             </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+
+
         </plugins>
     </build>
 
