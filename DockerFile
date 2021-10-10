@@ -1,0 +1,5 @@
+FROM openjdk:8
+ADD AccountSystemWebSpringBoot/target/AccountSystemWebSpringBoot-1.0-SNAPSHOT.war accountsystem.jar
+EXPOSE 8090
+ENTRYPOINT ["java", "-jar","accountsystem.jar"]
+
