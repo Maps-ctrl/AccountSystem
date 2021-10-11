@@ -6,4 +6,19 @@ import za.ac.nwu.domain.dto.persistence.AccountTypeDto;
 
 @Repository
 public interface AccountTypeRepository extends JpaRepository<AccountTypeDto, Long> {
+
+    @Query(value = "SELECT " +
+            "       at" +
+            "   FROM " +
+            "       Members at" +
+            "   WHERE at.username = :username")
+    AccountTypeDto getMembersByUsername(String username);
+
+    @Query(value = "SELECT " +
+            "       at" +
+            "   FROM " +
+            "       Members at" +
+            "   WHERE at.username = :username")
+    AccountTypeDto getMembersByUsername(String username);
+
 }
